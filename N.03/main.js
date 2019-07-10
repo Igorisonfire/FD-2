@@ -1,17 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    let surname = prompt('Ваша фамилия?', '');
-    let name = prompt('Ваше имя?', '');
-    let patronymic = prompt('Ваше отчество?', '');
-    let age = prompt('Сколько вам лет?', '');
+    let surname = prompt('Ваша фамилия?');
+    let name = prompt('Ваше имя?');
+    let patronymic = prompt('Ваше отчество?');
+    let age = prompt('Сколько вам лет?');
     let ageAfterFive = Number(age)+5;
     let isMan = confirm('Ваш пол - мужской?');
     let gender, benefit;
-
-    if(surname){
-        return
-    }
-
 
     function genderBenefitFun(yourAge, benefitAge) {
         return yourAge >= benefitAge ? 'да' : 'нет';
