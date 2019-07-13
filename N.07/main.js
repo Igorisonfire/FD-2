@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     console.time('time2');
-    const vowelsSum2 = (s) => s.split('').filter(c => 'аоиеёэыуюя'.includes(c)).length;
+    const vowelsSum2 = (str) => str.split('').filter(c => 'аоиеёэыуюя'.includes(c)).length;
     console.timeEnd('time2');
 
 
