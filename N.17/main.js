@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     return sum
                 }
             });
-        }, 0);
+        });
     };
     console.timeEnd('time3');
 
