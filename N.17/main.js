@@ -2,11 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let yourStr = prompt('Введите строку: ');
 
-    console.time('time1');
-    const vowelsSumFilter = (str) => str.split('').filter(item => 'аоиеёэыуюя'.includes(item)).length;
-    console.timeEnd('time1');
+    //----------------------------------------
 
-    console.time('time2');
+    console.time('time1');
     const vowelsSumForEach = (str) => {
         let counter = 0;
         str.split('').forEach((itemText) => {
@@ -20,12 +18,38 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         return counter
     };
+    console.timeEnd('time1');
+
+    //----------------------------------------
+
+    console.time('time2');
+    const vowelsSumFilter = (str) => str.split('').filter(item => 'аоиеёэыуюя'.includes(item)).length;
     console.timeEnd('time2');
 
+    //----------------------------------------
+
+    console.time('time3');
+    const vowelsSumReduce = (str) => {
+        str.split('').reduce((sum, itemText) => {
+            let vowelsArray = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
+
+            vowelsArray.forEach((itemVowels) =>{
+                if (itemText === itemVowels){
+                    return sum
+                }
+            });
+        }, 0);
+    };
+    console.timeEnd('time3');
+
+    //----------------------------------------
 
     vowelsSumFilter(yourStr);
     console.log('Количество гласных -', vowelsSumFilter(yourStr));
 
     vowelsSumForEach(yourStr);
+    console.log('Количество гласных -', vowelsSumForEach(yourStr));
+
+    vowelsSumReduce(yourStr);
     console.log('Количество гласных -', vowelsSumForEach(yourStr));
 });
