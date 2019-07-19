@@ -4,15 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     console.time("time");
     function vowelsSum1(str) {
-        let vowelsArray = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
+        let vowelsArray = 'аоиеёэыуюяАОИЕЁЭЫУЮЯ'.split('');
         let strToArray = str.split('');
         let counter = 0;
 
-        for(let i = 0; i < vowelsArray.length; i++){
-            for(let n = 0; n < strToArray.length; n++){
-                if (strToArray[n] === vowelsArray[i]){
-                    counter++
-                }
+        for(let i = 0; i < strToArray.length; i++){
+            if(vowelsArray.indexOf(strToArray[i]) !== -1){
+                counter++
             }
         }
         return counter
@@ -21,9 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     console.time('time2');
-    const vowelsSum2 = (str) => str.split('').filter(c => 'аоиеёэыуюя'.includes(c)).length;
+    const vowelsSum2 = (str) => str.split('').filter(c => 'аоиеёэыуюяАОИЕЁЭЫУЮЯ'.includes(c)).length;
     console.timeEnd('time2');
-
 
 
     vowelsSum1(yourStr);
