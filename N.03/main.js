@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function circleFunc(message) {
         let result = prompt(message);
-        if(result.length === 0){
+        if(!result || result.trim().length === 0){
             result = circleFunc(message)
         }
         return result
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function correctAgeFunc(message) {
         let result = circleFunc(message);
 
-        if(!Number(result)){
+        if(!Number(result) || Number(result) > 120){
             result = correctAgeFunc(message)
         }
         return result

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let sumArr = 0;
 
         for(let i = 0; i < yourArray.length; i++){
-            if(yourArray[i].length >= 0){
+            if(Array.isArray(yourArray[i])){
                 sumArr += treeSum(yourArray[i])
             }
             else {
@@ -32,8 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         return sumArr
     }
-
-    treeSum(testArray);
 
     console.log(treeSum(testArray))
 });
