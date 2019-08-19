@@ -1,32 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  function HashStorage() {
-    let storage = {};
-
-    this.addValue = (key, value) => {
-      if (typeof key === 'string') {
-        storage[key] = value;
-        return storage;
-      }
-    };
-
-    this.getValue = (key) => {
-      return storage[key];
-    };
-
-    this.deleteValue = (key) => {
-      delete storage[key];
-    };
-
-    this.getKeys = () => {
-      return Object.keys(storage);
-    };
-  }
-
   let drinkStorage = new HashStorage();
 
-  console.log(drinkStorage.addValue('name1', 'Sprite'));
-  console.log(drinkStorage.addValue('name2', 'Cola'));
-  console.log(drinkStorage.addValue('name3', 'Fanta'));
-  console.log(drinkStorage.getKeys());
+  let inputInfoButton = document.querySelector('.input-info');
+  let getInfoButton = document.querySelector('.get-info');
+  let deleteInfoButton = document.querySelector('.delete-info');
+  let getDrinksButton = document.querySelector('.get-drinks');
+
+  function inputInfo() {
+    let drinkName = prompt('Название напитка:');
+    let isAlcohol = confirm('Напиток алкогольный?');
+    let recipe = prompt('Рецепт:');
+
+    drinkStorage.addValue(drinkName, {isAlcohol: isAlcohol, recipe: recipe})
+  }
+
+  function getInfo() {
+    let drinkName = prompt('Название напитка:');
+    let isAlcohol = drinkStorage.getValue(drinkName).isAlcohol ? 'да' : 'нет';
+    let recipe = drinkStorage.getValue(drinkName).recipe;
+
+    alert('напиток ' + drinkName + '\n' +
+    'алкогольный: ' + isAlcohol + '\n' +
+    'рецепт приготовления: ' + recipe)
+  }
+
+  function deleteInfo() {
+    let drinkName = prompt('Название напитка:');
+    let info = drinkStorage.deleteValue(drinkName) ? 'Напиток удален' : 'Напиток не найден';
+    alert(info)
+  }
+
+  function getDrinks() {
+    let info = drinkStorage.getKeys();
+    alert(info)
+  }
+
+
+  inputInfoButton.addEventListener('click', inputInfo);
+  getInfoButton.addEventListener('click', getInfo);
+  deleteInfoButton.addEventListener('click', deleteInfo);
+  getDrinksButton.addEventListener('click', getDrinks);
+
 });
