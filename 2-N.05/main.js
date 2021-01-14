@@ -33,7 +33,40 @@ document.addEventListener("DOMContentLoaded", function() {
         return sumArr
     }
 
-    console.log(treeSum(testArray))
+
+    // счетчик монет
+    function newTestFunc(num, isItRecursion) {
+        let count = 0
+        let optionsArr = []
+        const coinsArr = [11, 9, 7, 5, 1]
+
+        for (let i = 0; i < coinsArr.length; i++){
+            if (num === 0) {
+                break
+            } else if (coinsArr[i] > num) {
+                continue
+            } else if (isItRecursion) {
+                count = Math.floor(num / coinsArr[i]) + newTestFunc(num % coinsArr[i], true).count
+                break
+            } else {
+                count = Math.floor(num / coinsArr[i]) + newTestFunc(num % coinsArr[i], true).count
+            }
+
+            optionsArr.push(count)
+        }
+
+
+
+        return {count, optionsArr}
+    }
+
+    function finalFunc(num) {
+        return Math.min(...newTestFunc(num).optionsArr)
+    }
+
+
+
+    console.log('final = ', finalFunc(16))
 });
 
 
